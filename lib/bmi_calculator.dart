@@ -1,3 +1,5 @@
+import 'package:calculator/calculatebutton.dart';
+import 'package:calculator/floatingbutton.dart';
 import 'package:calculator/re_use_container.dart';
 import 'package:calculator/slider_content.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'icon_content.dart';
 
-const bottomContainerHeight = 80.0;
 Color colorMale = Colors.blueGrey.shade400;
 Color colorFemale = Colors.blueGrey.shade400;
 Color changeColor = Colors.pink;
@@ -15,6 +16,8 @@ enum Gender {
 }
 Gender? gender;
 double currentValue = 150;
+int count = 50;
+int age = 25;
 
 class BmiCalculatorPage extends StatefulWidget {
   const BmiCalculatorPage({Key? key}) : super(key: key);
@@ -92,27 +95,44 @@ class _BmiCalculatorPageState extends State<BmiCalculatorPage> {
                       child: ReuseableContainer(
                     gestureTap: () {},
                     clr: Colors.blueGrey.shade400,
-                    containerChild: Column(
-                      children: [],
+                    containerChild: FloatingactionButton(
+                      title: "WEIGHT",
+                      weight: count,
+                      onPress1: () {
+                        setState(() {
+                          count--;
+                        });
+                      },
+                      onPress2: () {
+                        setState(() {
+                          count++;
+                        });
+                      },
                     ),
                   )),
                   Expanded(
                       child: ReuseableContainer(
                     gestureTap: () {},
                     clr: Colors.blueGrey.shade400,
-                    containerChild: Column(
-                      children: [],
+                    containerChild: FloatingactionButton(
+                      title: "AGE",
+                      weight: age,
+                      onPress1: () {
+                        setState(() {
+                          age--;
+                        });
+                      },
+                      onPress2: () {
+                        setState(() {
+                          age++;
+                        });
+                      },
                     ),
                   )),
                 ],
               ),
             ),
-            Container(
-              color: Colors.pink,
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: bottomContainerHeight,
-            ),
+            CalculateButton(ontap: () {}, title: "CALCULATE"),
           ],
         ),
       ),
