@@ -10,7 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BmiCalculatorPage(),
+      initialRoute: 'bmihomepage',
+      routes: {
+        'bmihomepage': (context) => BmiCalculatorPage(),
+      },
     );
   }
 }
